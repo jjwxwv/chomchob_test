@@ -1,4 +1,3 @@
-import { DataTypes, Sequelize } from "sequelize";
 const sequelize = new Sequelize();
 
 const User = sequelize.define("user", {
@@ -39,9 +38,9 @@ const Item = sequelize.define("item", {
     allowNull: false,
   },
   itemDetail: { type: DataTypes.TEXT },
-  itemPrice: { type: DataTypes.DECIMAL(10, 2) },
-  openSaleDate: { type: DataTypes.DATE },
-  endSaleDate: { type: DataTypes.DATE },
+  itemPrice: { type: DataTypes.DECIMAL(10, 2), allowNull: false },
+  openSaleDate: { type: DataTypes.DATE, allowNull: false },
+  endSaleDate: { type: DataTypes.DATE, allowNull: false },
 });
 
 Item.hasOne(DiscountForItem);
@@ -54,7 +53,7 @@ const DiscountForItem = sequelize.define("discount_item", {
     primaryKey: true,
     autoIncrement: true,
   },
-  discountPrice: { type: DataTypes.DECIMAL(10, 2) },
+  discountPrice: { type: DataTypes.DECIMAL(10, 2), allowNull: false },
   startDate: { type: DataTypes.DATE, allowNull: false },
   endDate: { type: DataTypes.DATE, allowNull: false },
 });
@@ -75,9 +74,9 @@ const Bundle = sequelize.define("bundle", {
     allowNull: false,
   },
   bundleDetail: { type: DataTypes.TEXT },
-  bundlePrice: { type: DataTypes.DECIMAL(10, 2) },
-  openSaleDate: { type: DataTypes.DATE },
-  endSaleDate: { type: DataTypes.DATE },
+  bundlePrice: { type: DataTypes.DECIMAL(10, 2), allowNull: false },
+  openSaleDate: { type: DataTypes.DATE, allowNull: false },
+  endSaleDate: { type: DataTypes.DATE, allowNull: false },
 });
 
 Bundle.hasMany(BundleDetails);
@@ -106,6 +105,7 @@ const Order = sequelize.define("order", {
   },
   orderDate: {
     type: DataTypes.DATE,
+    allowNull: false,
   },
 });
 
