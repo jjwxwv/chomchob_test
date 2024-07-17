@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "0b83f641-b477-472b-9dd5-67de8fc1c017",
+		"name": "walletapi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "34408964"
+	},
+	"item": [
+		{
+			"name": "(admin)get all wallet data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/admin/4/wallet/"
+			},
+			"response": []
+		},
+		{
+			"name": "(admin)get wallet by walletID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/admin/4/wallet/2"
+			},
+			"response": []
+		},
+		{
+			"name": "(admin)edit crypto balance that exist in wallet",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cryptoId\": 2,\r\n    \"balance\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/admin/4/wallet/2"
+			},
+			"response": []
+		},
+		{
+			"name": "(admin)add new crypto data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"Dogecoin\",\r\n    \"symbol\":\"DOGE\",\r\n    \"priceUSD\":0.1138\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/admin/4/crypto/"
+			},
+			"response": []
+		},
+		{
+			"name": "(admin)edit crypto data",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"Dogecoin\",\r\n    \"symbol\":\"DOGE\",\r\n    \"priceUSD\":0.1137\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/admin/4/crypto/8"
+			},
+			"response": []
+		},
+		{
+			"name": "transaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"destWalletId\": 3,\r\n    \"cryptoId\": 1,\r\n    \"transferedToCryptoId\": 1,\r\n    \"amount\": 0.25\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/wallet/1/transaction"
+			},
+			"response": []
+		}
+	]
+}

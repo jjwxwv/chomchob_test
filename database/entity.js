@@ -1,5 +1,6 @@
 const sequelize = new Sequelize();
 
+// store user data
 const User = sequelize.define("user", {
   id: {
     type: DataTypes.INTEGER,
@@ -26,6 +27,7 @@ const User = sequelize.define("user", {
 
 User.hasMany(Order);
 
+//store item list and details
 const Item = sequelize.define("item", {
   id: {
     type: DataTypes.INTEGER,
@@ -47,6 +49,7 @@ Item.hasOne(DiscountForItem);
 Item.hasMany(BundleDetails);
 Item.hasMany(OrderDetail);
 
+//store promotion price or discount price of each item
 const DiscountForItem = sequelize.define("discount_item", {
   id: {
     type: DataTypes.INTEGER,
@@ -62,6 +65,7 @@ DiscountForItem.belongsTo(Item, {
   foreignKey: { name: "item_id", allowNull: false },
 });
 
+//store bundle and text details
 const Bundle = sequelize.define("bundle", {
   id: {
     type: DataTypes.INTEGER,
@@ -82,6 +86,7 @@ const Bundle = sequelize.define("bundle", {
 Bundle.hasMany(BundleDetails);
 Bundle.hasMany(OrderDetail);
 
+//store bundle items
 const BundleDetails = sequelize.define("bundle_details", {
   id: {
     type: DataTypes.INTEGER,
@@ -97,6 +102,7 @@ BundleDetails.belongsTo(Bundle, {
   foreignKey: { name: "bundle_id", allowNull: false },
 });
 
+//store order of user and date
 const Order = sequelize.define("order", {
   id: {
     type: DataTypes.INTEGER,
@@ -114,6 +120,7 @@ Order.belongsTo(User, {
 });
 Order.hasMany(OrderDetail);
 
+//store item that included in order
 const OrderDetail = sequelize.define("order_detail", {
   id: {
     type: DataTypes.INTEGER,
@@ -141,6 +148,7 @@ OrderDetail.belongsTo(Order, {
 });
 OrderDetail.hasOne(ItemCode);
 
+//store code that produce after order was created
 const ItemCode = sequelize.define("item_code", {
   id: {
     type: DataTypes.INTEGER,
